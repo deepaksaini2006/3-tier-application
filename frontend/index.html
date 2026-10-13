@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admissions 2026–27 | Sobhasaria Group of Institutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --brick:#8E3326; --brick-dark:#5F2018; --sign:#14437F; --sand:#F6F1E9; --ink:#1E1B19; --muted:#5E5851; --line:#DDD3C4; --white:#fff;
+  --serif:'Source Serif 4',Georgia,serif; --sans:'Public Sans',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font:16px/1.6 var(--sans);color:var(--ink);background:var(--sand)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--sign);outline-offset:2px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:var(--serif);line-height:1.2}
+h2{font-size:clamp(1.6rem,3vw,2.1rem);margin-bottom:8px}
+.lead{color:var(--muted);max-width:60ch;margin-bottom:28px}
+section{padding:56px 0}
+
+/* header */
+header{background:var(--white);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px}
+.brand{font-family:var(--serif);font-weight:700;color:var(--brick-dark);text-decoration:none;font-size:1.05rem}
+nav{display:flex;gap:20px;font-size:.95rem;flex-wrap:wrap}
+nav a{text-decoration:none;color:var(--muted)}
+nav a:hover{color:var(--brick)}
+.btn{display:inline-block;background:var(--brick);color:var(--white);border:0;border-radius:6px;padding:12px 22px;font:600 1rem var(--sans);text-decoration:none;cursor:pointer}
+.btn:hover{background:var(--brick-dark)}
+.btn.alt{background:transparent;border:2px solid var(--white)}
+.btn.alt:hover{background:rgba(255,255,255,.15)}
+
+/* hero: running-bond brick courses, like the college building */
+.hero{color:var(--white);padding:84px 0 72px;background-color:var(--brick);
+  background-image:
+   linear-gradient(rgba(95,32,24,.55),rgba(95,32,24,.8)),
+   repeating-linear-gradient(90deg,transparent 0 62px,rgba(0,0,0,.18) 62px 64px),
+   repeating-linear-gradient(0deg,transparent 0 30px,rgba(0,0,0,.22) 30px 32px)}
+.hero h1{font-size:clamp(2.2rem,6vw,3.8rem);max-width:16ch;margin-bottom:16px}
+.hero p{max-width:52ch;font-size:1.1rem;margin-bottom:28px;color:#F3E4DF}
+.hero .row{display:flex;gap:12px;flex-wrap:wrap}
+.facts{background:var(--sign);color:var(--white)}
+.facts .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px 24px;padding-top:18px;padding-bottom:18px}
+.facts b{display:block;font-family:var(--serif);font-size:1.1rem}
+.facts span{font-size:.9rem;opacity:.85}
+
+/* programs */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.tab{background:var(--white);border:1px solid var(--line);border-radius:999px;padding:8px 18px;font:500 .95rem var(--sans);cursor:pointer}
+.tab[aria-selected="true"]{background:var(--sign);border-color:var(--sign);color:var(--white)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.card{background:var(--white);border:1px solid var(--line);border-radius:6px;padding:20px}
+.card h3{font-size:1.1rem;margin-bottom:6px}
+.card p{font-size:.92rem;color:var(--muted)}
+.card .meta{margin-top:10px;font-weight:600;color:var(--sign);font-size:.9rem}
+
+/* steps */
+.steps{list-style:none;padding:0;display:grid;gap:0;max-width:720px;counter-reset:s}
+.steps li{counter-increment:s;position:relative;padding:0 0 26px 56px;border-left:2px solid var(--line);margin-left:18px}
+.steps li:last-child{border-color:transparent;padding-bottom:0}
+.steps li::before{content:counter(s);position:absolute;left:-19px;top:0;width:36px;height:36px;border-radius:50%;background:var(--brick);color:var(--white);display:grid;place-items:center;font-weight:600}
+.steps h3{font-size:1.05rem}
+.steps p{color:var(--muted);font-size:.95rem}
+
+/* form */
+.formbox{background:var(--white);border:1px solid var(--line);border-radius:8px;padding:28px;max-width:760px}
+form{display:grid;grid-template-columns:1fr 1fr;gap:16px 20px}
+.full{grid-column:1/-1}
+label{display:block;font-weight:600;font-size:.92rem;margin-bottom:4px}
+input,select,textarea{width:100%;padding:11px 12px;border:1px solid #BDB2A1;border-radius:6px;font:inherit;background:var(--white)}
+input[aria-invalid="true"],select[aria-invalid="true"]{border-color:#B3261E;background:#FFF6F5}
+.err{color:#B3261E;font-size:.85rem;min-height:1.2em;margin-top:2px}
+.hint{font-size:.85rem;color:var(--muted)}
+.check{display:flex;gap:10px;align-items:flex-start}
+.check input{width:auto;margin-top:5px}
+.check label{font-weight:400}
+#done{display:none;background:#EAF3EA;border:1px solid #9CC49C;border-radius:8px;padding:24px;max-width:760px}
+#done h3{margin-bottom:8px}
+#done dl{display:grid;grid-template-columns:auto 1fr;gap:4px 16px;margin:12px 0}
+#done dt{font-weight:600}
+
+/* faq */
+details{background:var(--white);border:1px solid var(--line);border-radius:6px;padding:14px 18px;margin-bottom:10px;max-width:760px}
+summary{cursor:pointer;font-weight:600}
+details p{margin-top:8px;color:var(--muted)}
+
+footer{background:var(--brick-dark);color:#EAD6D0;padding:36px 0;font-size:.92rem}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer strong{color:var(--white)}
+
+@media (max-width:640px){form{grid-template-columns:1fr}nav{display:none}.formbox{padding:20px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="#top">Sobhasaria Group of Institutions</a>
+    <nav aria-label="Main">
+      <a href="#programs">Programs</a>
+      <a href="#process">How to apply</a>
+      <a href="#faq">FAQ</a>
+      <a href="#apply">Apply</a>
+    </nav>
+    <a class="btn" href="#apply">Apply now</a>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <h1>Admissions open for 2026–27</h1>
+      <p>Choose your program, check eligibility and send your application to our campus in Sikar, Rajasthan in a few minutes.</p>
+      <div class="row">
+        <a class="btn alt" href="#programs">See programs</a>
+        <a class="btn" style="background:var(--white);color:var(--brick-dark)" href="#apply">Start application</a>
+      </div>
+    </div>
+  </div>
+  <div class="facts">
+    <div class="wrap">
+      <div><b>Sikar, Rajasthan</b><span>Main campus</span></div>
+      <div><b>Undergraduate and postgraduate</b><span>Engineering, management, computer applications</span></div>
+      <div><b>Hostel and transport</b><span>Ask the admission office for availability</span></div>
+    </div>
+  </div>
+
+  <section id="programs">
+    <div class="wrap">
+      <h2>Programs</h2>
+      <p class="lead">Filter by level. Seat numbers and fees are confirmed by the admission office, so check them before you pay anything.</p>
+      <div class="tabs" role="tablist" aria-label="Program level">
+        <button class="tab" role="tab" aria-selected="true" data-level="all">All</button>
+        <button class="tab" role="tab" aria-selected="false" data-level="ug">Undergraduate</button>
+        <button class="tab" role="tab" aria-selected="false" data-level="pg">Postgraduate</button>
+        <button class="tab" role="tab" aria-selected="false" data-level="dip">Diploma</button>
+      </div>
+      <div class="grid" id="programGrid"></div>
+    </div>
+  </section>
+
+  <section id="process" style="background:var(--white)">
+    <div class="wrap">
+      <h2>How to apply</h2>
+      <p class="lead">Four steps from form to enrollment.</p>
+      <ol class="steps">
+        <li><h3>Submit the online form</h3><p>Fill in the form below with your details and the program you want.</p></li>
+        <li><h3>Receive your reference number</h3><p>Keep it safe. You will use it in every message to the admission office.</p></li>
+        <li><h3>Verify your documents</h3><p>Bring originals of your mark sheets, ID proof and entrance score card to the campus.</p></li>
+        <li><h3>Pay the fee and confirm your seat</h3><p>Your seat is confirmed after document verification and fee payment.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="apply">
+    <div class="wrap">
+      <h2>Application form</h2>
+      <p class="lead">Fields marked * are required.</p>
+
+      <div class="formbox" id="formBox">
+        <form id="admForm" novalidate>
+          <div>
+            <label for="name">Full name *</label>
+            <input id="name" name="name" autocomplete="name">
+            <div class="err" data-for="name"></div>
+          </div>
+          <div>
+            <label for="dob">Date of birth *</label>
+            <input id="dob" name="dob" type="date">
+            <div class="err" data-for="dob"></div>
+          </div>
+          <div>
+            <label for="email">Email *</label>
+            <input id="email" name="email" type="email" autocomplete="email">
+            <div class="err" data-for="email"></div>
+          </div>
+          <div>
+            <label for="phone">Mobile number *</label>
+            <input id="phone" name="phone" inputmode="numeric" maxlength="10" autocomplete="tel-national">
+            <div class="hint">10 digits, without +91</div>
+            <div class="err" data-for="phone"></div>
+          </div>
+          <div>
+            <label for="course">Program *</label>
+            <select id="course" name="course"><option value="">Select a program</option></select>
+            <div class="err" data-for="course"></div>
+          </div>
+          <div>
+            <label for="branch">Branch / specialization *</label>
+            <select id="branch" name="branch" disabled><option value="">Select a program first</option></select>
+            <div class="err" data-for="branch"></div>
+          </div>
+          <div>
+            <label for="qual">Last qualification *</label>
+            <select id="qual" name="qual">
+              <option value="">Select</option>
+              <option>Class 10</option><option>Class 12 (PCM)</option><option>Class 12 (other stream)</option>
+              <option>Diploma</option><option>Bachelor's degree</option>
+            </select>
+            <div class="err" data-for="qual"></div>
+          </div>
+          <div>
+            <label for="marks">Percentage / CGPA-equivalent % *</label>
+            <input id="marks" name="marks" type="number" min="0" max="100" step="0.01">
+            <div class="err" data-for="marks"></div>
+          </div>
+          <div class="full">
+            <label for="city">City and state *</label>
+            <input id="city" name="city" autocomplete="address-level2">
+            <div class="err" data-for="city"></div>
+          </div>
+          <div class="full">
+            <label for="msg">Anything else we should know?</label>
+            <textarea id="msg" name="msg" rows="3"></textarea>
+          </div>
+          <div class="full">
+            <div class="check">
+              <input type="checkbox" id="agree" name="agree">
+              <label for="agree">I confirm the details above are correct and agree to be contacted by the admission office.</label>
+            </div>
+            <div class="err" data-for="agree"></div>
+          </div>
+          <div class="full"><button class="btn" type="submit">Submit application</button></div>
+        </form>
+      </div>
+
+      <div id="done" role="status" tabindex="-1">
+        <h3>Application received</h3>
+        <p>Thank you, <span id="dName"></span>. Keep your reference number for all follow-ups.</p>
+        <dl>
+          <dt>Reference</dt><dd id="dRef"></dd>
+          <dt>Program</dt><dd id="dCourse"></dd>
+          <dt>Email</dt><dd id="dEmail"></dd>
+        </dl>
+        <p class="hint">Next: bring original documents to the campus for verification.</p>
+        <p style="margin-top:14px"><button class="btn" id="again" type="button">Submit another application</button></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" style="background:var(--white)">
+    <div class="wrap">
+      <h2>Frequently asked questions</h2>
+      <p class="lead">Quick answers before you apply.</p>
+      <details><summary>Who can apply for B.Tech?</summary><p>Students who passed Class 12 with Physics and Mathematics are typically eligible. Exact criteria and entrance requirements are listed by the admission office.</p></details>
+      <details><summary>Can I apply for more than one program?</summary><p>Yes. Submit a separate application for each program.</p></details>
+      <details><summary>Is hostel accommodation available?</summary><p>Ask the admission office about current availability and fees when you receive your reference number.</p></details>
+      <details><summary>What documents should I keep ready?</summary><p>Class 10 and 12 mark sheets, entrance score card if applicable, ID proof, passport-size photographs and a transfer certificate.</p></details>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><strong>Sobhasaria Group of Institutions</strong><br>Sikar, Rajasthan, India</div>
+    <div>Admission office: add phone and email here<br>Sample content. Verify details with the institution.</div>
+  </div>
+</footer>
+
+<script>
+const PROGRAMS = [
+  {name:'B.Tech', level:'ug', years:4, desc:'Engineering degree with a core and elective structure.', branches:['Computer Science & Engineering','Electronics & Communication','Mechanical Engineering','Civil Engineering','Electrical Engineering']},
+  {name:'BCA', level:'ug', years:3, desc:'Computer applications, programming and software development.', branches:['General']},
+  {name:'BBA', level:'ug', years:3, desc:'Business management foundations for future managers.', branches:['General']},
+  {name:'M.Tech', level:'pg', years:2, desc:'Advanced engineering study with a research focus.', branches:['Computer Science','Structural Engineering','Thermal Engineering']},
+  {name:'MBA', level:'pg', years:2, desc:'Management program with specializations.', branches:['Marketing','Finance','Human Resources']},
+  {name:'Diploma in Engineering', level:'dip', years:3, desc:'Practical, skills-first technical program.', branches:['Computer Engineering','Mechanical Engineering','Civil Engineering']}
+];
+
+const grid = document.getElementById('programGrid');
+const tabs = document.querySelectorAll('.tab');
+const courseSel = document.getElementById('course');
+const branchSel = document.getElementById('branch');
+
+function renderPrograms(level){
+  const list = PROGRAMS.filter(p => level === 'all' || p.level === level);
+  grid.innerHTML = '';
+  list.forEach(p => {
+    const c = document.createElement('article');
+    c.className = 'card';
+    c.innerHTML = `<h3>${p.name}</h3><p>${p.desc}</p><div class="meta">${p.years} years · ${p.branches.length} branch${p.branches.length>1?'es':''}</div>`;
+    grid.appendChild(c);
+  });
+}
+tabs.forEach(t => t.addEventListener('click', () => {
+  tabs.forEach(x => x.setAttribute('aria-selected', x === t));
+  renderPrograms(t.dataset.level);
+}));
+renderPrograms('all');
+
+PROGRAMS.forEach(p => courseSel.add(new Option(p.name, p.name)));
+courseSel.addEventListener('change', () => {
+  const p = PROGRAMS.find(x => x.name === courseSel.value);
+  branchSel.innerHTML = '';
+  if(!p){ branchSel.add(new Option('Select a program first','')); branchSel.disabled = true; return; }
+  branchSel.add(new Option('Select a branch',''));
+  p.branches.forEach(b => branchSel.add(new Option(b,b)));
+  branchSel.disabled = false;
+});
+
+const form = document.getElementById('admForm');
+const rules = {
+  name: v => v.trim().length >= 3 || 'Enter your full name.',
+  dob: v => {
+    if(!v) return 'Select your date of birth.';
+    const age = (Date.now() - new Date(v)) / 31557600000;
+    return (age >= 15 && age <= 60) || 'Enter a valid date of birth.';
+  },
+  email: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) || 'Enter a valid email address, like name@example.com.',
+  phone: v => /^[6-9]\d{9}$/.test(v) || 'Enter a 10-digit mobile number starting with 6, 7, 8 or 9.',
+  course: v => !!v || 'Select a program.',
+  branch: v => !!v || 'Select a branch.',
+  qual: v => !!v || 'Select your last qualification.',
+  marks: v => (v !== '' && +v >= 0 && +v <= 100) || 'Enter a percentage between 0 and 100.',
+  city: v => v.trim().length >= 2 || 'Enter your city and state.',
+  agree: (v, el) => el.checked || 'Please confirm to submit.'
+};
+
+function check(name){
+  const el = form.elements[name];
+  const res = rules[name](el.value, el);
+  const msg = res === true ? '' : res;
+  form.querySelector(`.err[data-for="${name}"]`).textContent = msg;
+  el.setAttribute('aria-invalid', msg ? 'true' : 'false');
+  return !msg;
+}
+Object.keys(rules).forEach(n => {
+  form.elements[n].addEventListener('blur', () => check(n));
+  form.elements[n].addEventListener('change', () => check(n));
+});
+form.elements.phone.addEventListener('input', e => { e.target.value = e.target.value.replace(/\D/g,''); });
+
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  const results = Object.keys(rules).map(check);
+  if(results.includes(false)){
+    const first = form.querySelector('[aria-invalid="true"]');
+    first && first.focus();
+    return;
+  }
+  const ref = 'SGI26-' + Math.random().toString(36).slice(2,8).toUpperCase();
+  document.getElementById('dName').textContent = form.elements.name.value.trim();
+  document.getElementById('dRef').textContent = ref;
+  document.getElementById('dCourse').textContent = form.elements.course.value + ' (' + form.elements.branch.value + ')';
+  document.getElementById('dEmail').textContent = form.elements.email.value;
+  document.getElementById('formBox').style.display = 'none';
+  const done = document.getElementById('done');
+  done.style.display = 'block';
+  done.focus();
+  // To store the application, send FormData(form) to your backend here, e.g. fetch('/api/apply', {method:'POST', body:new FormData(form)})
+});
+
+document.getElementById('again').addEventListener('click', () => {
+  form.reset();
+  branchSel.innerHTML = '<option value="">Select a program first</option>';
+  branchSel.disabled = true;
+  document.getElementById('done').style.display = 'none';
+  document.getElementById('formBox').style.display = 'block';
+  form.elements.name.focus();
+});
+</script>
+</body>
+</html>

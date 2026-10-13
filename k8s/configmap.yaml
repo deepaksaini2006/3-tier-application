@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: backend-config
+  namespace: sobhasaria
+data:
+  # names used by the MySQL pod and by app.py
+  MYSQL_HOST: mysql-service
+  MYSQL_PORT: "3306"
+  MYSQL_DATABASE: sobhasaria
+  MYSQL_USER: appuser
+  # your original keys, kept so nothing else breaks
+  DB_HOST: mysql-service
+  DB_PORT: "3306"
+  DB_NAME: sobhasaria
+  DB_USER: appuser
+  # allow your site to call the API (change to your real address)
+  CORS_ORIGINS: "*"

@@ -1,0 +1,44 @@
+services:
+  db:
+    image: mysql:8.4
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-rootpass_change_me}
+      MYSQL_DATABASE: sobhasaria_admissions
+      MYSQL_USER: admission_app
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-ChangeMe_Strong_Pass1}
+    volumes:
+      - dbdata:/var/lib/mysql
+      - ./database/migrations:/docker-entrypoint-initdb.d:ro   # runs on first start only
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-uroot", "-p${MYSQL_ROOT_PASSWORD:-rootpass_change_me}"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  api:
+    build: ./backend
+    restart: unless-stopped
+    environment:
+      MYSQL_HOST: db
+      MYSQL_USER: admission_app
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-ChangeMe_Strong_Pass1}
+      MYSQL_DATABASE: sobhasaria_admissions
+      ADMIN_TOKEN: ${ADMIN_TOKEN:-change-this-token}
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://127.0.0.1:8080,http://localhost:8080}
+    ports:
+      - "5000:5000"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  web:
+    build: ./frontend
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    depends_on:
+      - api
+
+volumes:
+  dbdata:
